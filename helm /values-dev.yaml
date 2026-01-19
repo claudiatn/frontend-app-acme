@@ -1,0 +1,9 @@
+replicaCount: 1
+
+ingress:
+  enabled: true
+  hosts:
+    - host: frontend-dev.local
+      paths:
+        - path: /
+          pathType: Prefix
