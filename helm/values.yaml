@@ -1,9 +1,12 @@
 replicaCount: 1
 
 image:
-  repository: frontend
-  tag: "latest"
+  repository: ghcr.io/claudiatn/acme-frontend
+  tag: "1.0"
   pullPolicy: IfNotPresent
+
+imagePullSecrets: 
+  - name: ghcr-secret
 
 service:
   type: ClusterIP
