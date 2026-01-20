@@ -9,6 +9,17 @@ on:
   #   branches:
   #     - develop
   #   types: [opened, synchronize, reopened]
+    inputs:
+      environment:
+          type: choice
+          description: Selecciona el entorno
+          required: true
+          options:
+            - dev
+            - staging
+            - production
+          default: dev
+          
 permissions:
   contents: read
   packages: write
@@ -27,4 +38,5 @@ jobs:
       image_name: acme-frontend
       version: 1.0.1
       chart: frontend
+      environment: ${{ inputs.environment }} 
     secrets: inherit
