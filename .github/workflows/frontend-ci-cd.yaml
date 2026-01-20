@@ -36,8 +36,8 @@ jobs:
     uses: claudiatn/platform-ci-cd/.github/workflows/cd-reusable.yaml@main
     with:
       namespace: acme
+      environment: ${{ inputs.environment }} 
       image_name: acme-frontend
       version: 1.0.1
       chart: frontend
-      environment: ${{ inputs.environment }} 
     secrets: inherit
