@@ -25,22 +25,14 @@ permissions:
   packages: write
   
 jobs:
-  # ci:
-  #   uses: claudiatn/platform-ci-cd/.github/workflows/ci-reusable.yaml@main
-  #   with:
-  #     image_name: acme-frontend
-  #     version: 1.0.1
-  #   secrets: inherit
-  debug:
-    runs-on: ubuntu-latest
-    steps:
-      - name: debug environment en frontend
-        run: |
-           echo environment elegido en FROTEND: ${{ inputs.environment }}
-          
-      
+  ci:
+    uses: claudiatn/platform-ci-cd/.github/workflows/ci-reusable.yaml@main
+    with:
+      image_name: acme-frontend
+      version: 1.0.1
+    secrets: inherit
   cd:
-   # needs: ci
+    needs: ci
     uses: claudiatn/platform-ci-cd/.github/workflows/cd-reusable.yaml@main
     with:
       namespace: acme
