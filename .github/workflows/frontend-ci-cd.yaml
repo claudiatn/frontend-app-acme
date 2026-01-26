@@ -32,7 +32,7 @@ jobs:
   #     version: 1.0.1
   #   secrets: inherit
   cd:
-    needs: ci
+   # needs: ci
     uses: claudiatn/platform-ci-cd/.github/workflows/cd-reusable.yaml@main
     with:
       namespace: acme
