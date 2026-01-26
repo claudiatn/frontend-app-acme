@@ -12,13 +12,12 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: frontend
+                name: {{ include "frontend.fullname" . }}
                 port:
                   number: 80
 
           - path: /api
-            pathType: Prefix
-            backend:
+                  backend:
               service:
                 name: backend-backend
                 port:

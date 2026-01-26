@@ -12,16 +12,6 @@ service:
   type: ClusterIP
   port: 80
 
-ingress:
-  enabled: true
-  className: ""
-  hosts:
-    - host: frontend.local
-      paths:
-        - path: /
-          pathType: Prefix
-  tls: []
-
 resources: {}
 nodeSelector: {}
 tolerations: []
