@@ -2,13 +2,13 @@ name: Frontend CI/CD
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - develop
-    types: [opened, synchronize, reopened]
+  # push:
+    # branches:
+    #   - main
+  # pull_request:
+  #   branches:
+  #     - develop
+  #   types: [opened, synchronize, reopened]
     inputs:
       environment:
           type: choice
