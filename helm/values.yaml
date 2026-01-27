@@ -1,11 +1,11 @@
 replicaCount: 1
 
-deploymentColor: blue
+deploymentColor: active
 
 
 image:
   repository: ghcr.io/claudiatn/acme-frontend
-  tag: "1.0"
+  tag: "1.0.2"
   pullPolicy: IfNotPresent
 
 imagePullSecrets: 
@@ -29,3 +29,8 @@ resources: {}
 nodeSelector: {}
 tolerations: []
 affinity: {}
+
+canary:
+  enabled: true
+  replicas: 1
+  weight: 10   # 10% del tráfico

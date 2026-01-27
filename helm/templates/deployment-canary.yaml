@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ include "frontend.fullname" . }}-canary"
+  labels:
+    app: {{ include "frontend.name" . }}
+    color: canary
+spec:
+  replicas: {{ .Values.canary.replicas }}
+  selector:
+    matchLabels:
+      app: {{ include "frontend.name" . }}
+      color: canary
+  template:
+    metadata:
+      labels:
+        app: {{ include "frontend.name" . }}
+        color: canary
+    spec:
+      imagePullSecrets:
+      {{- toYaml .Values.imagePullSecrets | nindent 8 }}
+      containers:
+        - name: frontend
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 80
