@@ -21,5 +21,6 @@ jobs:
     with:
       namespace: acme
       environment: dev
+      path_chart: ""
       chart: frontend
     secrets: inherit
