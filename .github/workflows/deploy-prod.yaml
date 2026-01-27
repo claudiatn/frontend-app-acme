@@ -1,0 +1,27 @@
+name: Frontend CI/CD
+
+on:
+  push:
+    branches:
+      - main
+          
+permissions:
+  contents: read
+  packages: write
+  
+jobs:
+  ci:
+    uses: claudiatn/platform-ci-cd/.github/workflows/ci-reusable.yaml@main
+    with:
+      image_name: acme-frontend
+      version: 1.0.2
+    secrets: inherit
+
+  cd:
+    needs: ci
+    uses: claudiatn/platform-ci-cd/.github/workflows/cd-reusable.yaml@main
+    with:
+      namespace: acme
+      environment: production
+      chart: frontend
+    secrets: inherit
