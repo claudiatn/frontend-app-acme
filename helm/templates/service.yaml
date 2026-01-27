@@ -8,6 +8,7 @@ spec:
   type: {{ .Values.service.type }}
   selector:
     app: {{ include "frontend.name" . }}
+    color: active
   ports:
     - port: {{ .Values.service.port }}
       targetPort: 80

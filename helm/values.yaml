@@ -1,5 +1,8 @@
 replicaCount: 1
 
+deploymentColor: blue
+
+
 image:
   repository: ghcr.io/claudiatn/acme-frontend
   tag: "1.0"
