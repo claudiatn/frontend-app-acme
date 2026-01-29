@@ -23,5 +23,6 @@ jobs:
     with:
       namespace: acme
       environment: staging
+      path_chart: ""
       chart: frontend
     secrets: inherit
