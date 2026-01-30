@@ -30,7 +30,7 @@ jobs:
     uses: claudiatn/platform-ci-cd/.github/workflows/promote.yaml@main
     with:
       namespace: acme
-      environment: prod
+      environment: production
       chart: frontend
       path_chart: ""
       image_tag: ${{ github.event.inputs.image_tag }}
