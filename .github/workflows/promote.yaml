@@ -18,12 +18,6 @@ jobs:
       path_chart: ""
       image_tag: ${{ github.event.inputs.image_tag }}
     secrets: inherit
-    # environment:
-    #   name: staging
-    #   url: https://staging.acme.com
-    #   # Requiere aprobación manual
-    #   reviewers:
-    #     - equipo-devops
 
   promote-prod:
     needs: promote-staging
