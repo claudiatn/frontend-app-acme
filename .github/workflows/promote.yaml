@@ -1,0 +1,43 @@
+name: Promote to Staging and Prod
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "Tag de la imagen a promover"
+        required: true
+
+jobs:
+
+  promote-staging:
+    uses: claudiatn/platform-ci-cd/.github/workflows/promote.yaml@main
+    with:
+      namespace: acme
+      environment: staging
+      chart: frontend
+      path_chart: ""
+      image_tag: ${{ github.event.inputs.image_tag }}
+    secrets: inherit
+    # environment:
+    #   name: staging
+    #   url: https://staging.acme.com
+    #   # Requiere aprobación manual
+    #   reviewers:
+    #     - equipo-devops
+
+  promote-prod:
+    needs: promote-staging
+    uses: claudiatn/platform-ci-cd/.github/workflows/promote.yaml@main
+    with:
+      namespace: acme
+      environment: prod
+      chart: frontend
+      path_chart: ""
+      image_tag: ${{ github.event.inputs.image_tag }}
+    secrets: inherit
+    # environment:
+    #   name: production
+    #   url: https://acme.com
+    #   reviewers:
+    #     - equipo-devops
+    #     - cto
