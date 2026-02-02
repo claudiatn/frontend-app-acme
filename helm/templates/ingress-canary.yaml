@@ -3,7 +3,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ include "frontend.fullname" . }}-canary
+  name: "{{ .Release.Name }}-canary"
   annotations:
     nginx.ingress.kubernetes.io/canary: "true"
     nginx.ingress.kubernetes.io/canary-weight: "{{ .Values.canary.weight }}"
@@ -16,7 +16,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ include "frontend.fullname" . }}-canary
+                name: {{ .Release.Name }}-canary
                 port:
                   number: 80
 {{- end }}

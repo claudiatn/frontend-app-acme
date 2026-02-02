@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "{{ include "frontend.fullname" . }}-canary"
+  name: "{{ .Release.Name }}-canary"
   labels:
-    app: {{ include "frontend.name" . }}
+    app: {{ .Release.Name }}
     color: canary
 spec:
   replicas: {{ .Values.canary.replicas }}
   selector:
     matchLabels:
-      app: {{ include "frontend.name" . }}
+      app: {{ .Release.Name }}
       color: canary
   template:
     metadata:
       labels:
-        app: {{ include "frontend.name" . }}
+        app: {{ .Release.Name }}
         color: canary
     spec:
       imagePullSecrets:

@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "{{ include "frontend.fullname" . }}-{{ .Values.deploymentColor }}"
+  name: {{ .Release.Name }}
   labels:
-    app: {{ include "frontend.name" . }}
+    app: {{ .Release.Name }}
     color: "{{ .Values.deploymentColor }}"
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "frontend.name" . }}
+      app: {{ .Release.Name }}
       color: "{{ .Values.deploymentColor }}"
   template:
     metadata:
       labels:
-        app: {{ include "frontend.name" . }}
+        app: {{ .Release.Name }}
         color: "{{ .Values.deploymentColor }}"
     spec:
       imagePullSecrets:
